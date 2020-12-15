@@ -25,7 +25,7 @@ class PrototypesController < ApplicationController
   end
 
   def edit 
-    @prototype = Prototype.find(params[:id])
+    @prototype = Prototype.find(params[:id])  
   end
   
   def update
@@ -49,12 +49,8 @@ class PrototypesController < ApplicationController
   end  
 
   def forbit_action
-    if @prototype = Prototype.find(params[:id])
-      if @prototype.user != current_user
-        redirect_to root_path
-      end  
-    else 
-      redirect_to root_path  
+    if current_user.id != Prototype.find(params[:id]).user.id
+      redirect_to root_path
     end  
   end  
 
