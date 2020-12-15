@@ -20,7 +20,7 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to root_path
     else
-      render partial: 'new'
+      render 'new'
     end    
   end
 
