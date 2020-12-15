@@ -49,8 +49,12 @@ class PrototypesController < ApplicationController
   end  
 
   def forbit_action
-    unless user_signed_in?
-      redirect_to root_path
+    if @prototype = Prototype.find(params[:id])
+      if @prototype.user != current_user
+        redirect_to root_path
+      end  
+    else 
+      redirect_to root_path  
     end  
   end  
 
